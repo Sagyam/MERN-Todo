@@ -1,0 +1,22 @@
+{
+  "name": "mern-tutorial",
+  "version": "1.0.0",
+  "main": "server.js",
+  "description": "A goal setter app made with MERN stack",
+  "author": "Sagyam Thapa <sagyamthapa32@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "nodemon ./backend/server.js",
+    "start": "node ./backend/server.js"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

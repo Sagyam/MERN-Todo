@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const brypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
-const User = require("../models/userModel");
+const User = require("../models/userModels");
 
 //@desc Register new user
 //@route POST /api/user
@@ -106,7 +106,7 @@ const getMe = asyncHandler(async (req, res) => {
 		id,
 		name,
 		email,
-	 });
+	});
 });
 
 //Generate token

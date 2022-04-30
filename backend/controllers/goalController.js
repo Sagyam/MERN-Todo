@@ -18,14 +18,13 @@ const getGoals = asyncHandler(async (req, res) => {
 //@access Public
 const updateGoal = asyncHandler(async (req, res) => {
 	const goal = await Goal.findById(req.params.id);
-	const user = await User.findById(req.user.id);
 
 	if (!goal) {
 		return res.status(400).json({
 			success: false,
 			message: "Goal not found",
 		});
-	} else if (!user) {
+	} else if (!req.user) {
 		return res.status(401).json({
 			success: false,
 			message: "User not found",
@@ -52,14 +51,14 @@ const updateGoal = asyncHandler(async (req, res) => {
 //@access Public
 const deleteGoal = asyncHandler(async (req, res) => {
 	const goal = await Goal.findById(req.params.id);
-	const user = await User.findById(req.user.id);
+	
 
 	if (!goal) {
 		return res.status(400).json({
 			success: false,
 			message: "Goal not found",
 		});
-	} else if (!user) {
+	} else if (!req.user) {
 		return res.status(401).json({
 			success: false,
 			message: "User not found",

@@ -7,7 +7,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "nodemon ./backend/server.js & npm start --prefix frontend",
+    "bed": "nodemon ./backend/server.js",
+    "fed": "npm start --prefix frontend",
     "start": "node ./backend/server.js"
   },
   "dependencies": {

@@ -51,7 +51,6 @@ const updateGoal = asyncHandler(async (req, res) => {
 //@access Public
 const deleteGoal = asyncHandler(async (req, res) => {
 	const goal = await Goal.findById(req.params.id);
-	
 
 	if (!goal) {
 		return res.status(400).json({
@@ -73,6 +72,7 @@ const deleteGoal = asyncHandler(async (req, res) => {
 		res.status(200).json({
 			success: true,
 			message: "Goal deleted",
+			id: req.params.id,
 		});
 	}
 });

@@ -33,6 +33,7 @@ h2,
 h3 {
 	font-weight: 600;
 	margin-bottom: 10px;
+	text-transform: capitalize;
 }
 
 .container {
@@ -88,15 +89,37 @@ h3 {
 
 .goals {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(1, 1fr);
 	gap: 10px;
 }
 
 .goal {
 	background-color: #f4f4f4;
 	margin: 10px 0;
-	padding: 20px 0 10px;
+	padding: 20px;
 	position: relative;
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+}
+
+.goal input[type="checkbox"] {
+	cursor: pointer;
+	transform: scale(2);
+	
+}
+
+.goal-text {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.complete {
+	opacity: 0.5;
+}
+.complete h2 {
+	text-decoration: line-through;
 }
 
 .goal .close {
@@ -105,7 +128,7 @@ h3 {
 	right: 15px;
 	cursor: pointer;
 	border: none;
-	background: none;
+	color: crimson;
 }
 
 .form,

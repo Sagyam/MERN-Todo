@@ -11,6 +11,10 @@ const goalSchema = new mongoose.Schema(
 			type: String,
 			required: [true, "A goal must have text"],
 		},
+		completed: {
+			type: Boolean,
+			default: false,
+		},
 	},
 	{
 		timestamps: true,

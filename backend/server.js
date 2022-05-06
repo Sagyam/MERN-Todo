@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const dotenv = require("dotenv").config();
 const colors = require("colors");
@@ -15,6 +16,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/goals", require("./routes/goalRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 
+//Serve static assets in production
+if (process.env.NODE_ENV === "production") {
+	//Set static folder
+	app.use(express.static(path.join(__dirname, "../frontend", "build")));
+	app.get("*", (req, res) => {
+		res.sendFile(path.join(__dirname, "../frontend", "build", "index.html"));
+	});
+} else {
+	app.get("/", (req, res) => res.send("Please set NODE_ENV to production"));
+}
 app.use(errorHandler);
 
 app.listen(port, () => {

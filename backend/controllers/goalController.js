@@ -81,12 +81,15 @@ const deleteGoal = asyncHandler(async (req, res) => {
 //@route POST /api/goals
 //@access Public
 const addGoal = asyncHandler(async (req, res) => {
-	if (!req.body.text) {
+	if (!req.body.goal) {
 		throw new Error("No text provided");
 	}
 	const goal = await Goal.create({
-		text: req.body.text,
+		goal: req.body.goal,
 		user: req.user.id,
+		deadline: req.body.deadline,
+		startTime: req.body.startTime,
+		endTime: req.body.endTime,
 	});
 	res.status(200).json({
 		success: true,

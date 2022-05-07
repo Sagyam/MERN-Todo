@@ -7,13 +7,25 @@ const goalSchema = new mongoose.Schema(
 			ref: "User",
 			required: [true, "User is required"],
 		},
-		text: {
+		goal: {
 			type: String,
-			required: [true, "A goal must have text"],
+			required: [true, "Goal is required"],
 		},
 		completed: {
 			type: Boolean,
 			default: false,
+		},
+		deadline: {
+			type: Date,
+			required: [true, "A goal must have a deadline"],
+		},
+		startTime: {
+			type: String,
+			required: [true, "A goal must have a start time"],
+		},
+		endTime: {
+			type: String,
+			required: [true, "A goal must have an end time"],
 		},
 	},
 	{

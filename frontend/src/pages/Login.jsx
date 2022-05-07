@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
 import Spinner from "../components/Spinner";
 
+import { Button } from "@chakra-ui/react";
+
 function Login() {
 	const [formData, setFormData] = useState({
 		email: "",
@@ -57,9 +59,6 @@ function Login() {
 	return (
 		<>
 			<section className="heading">
-				<h1>
-					<FaSignInAlt /> Login
-				</h1>
 				<p> Login and start setting goals </p>
 			</section>
 
@@ -90,7 +89,14 @@ function Login() {
 					</div>
 
 					<div className="form-group">
-						<button className="btn btn-block">Login</button>
+						<Button
+							variant="solid"
+							colorScheme="purple"
+							width="100%"
+							type="submit"
+						>
+							Login
+						</Button>
 					</div>
 				</form>
 			</section>

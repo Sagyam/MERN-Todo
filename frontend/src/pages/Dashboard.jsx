@@ -1,11 +1,17 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import GoalForm from "../components/GoalForm";
+
 import GoalItem from "../components/GoalItem";
-import Spinner from "../components/Spinner";
+import NewGoalModal from "../components/NewGoalModal";
+
 import { getGoals, reset } from "../features/goals/goalSlice";
+
 import { toast } from "react-toastify";
+import { Text, Button, Spinner } from "@chakra-ui/react";
+
+import "@fontsource/raleway/400.css";
+import "@fontsource/open-sans/700.css";
 
 function Dashboard() {
 	const navigate = useNavigate();
@@ -35,17 +41,48 @@ function Dashboard() {
 	}, [user, navigate, isError, message, dispatch]);
 
 	if (isLoading) {
-		return <Spinner />;
+		return (
+			<Spinner
+				thickness="5px"
+				speed="0.5s"
+				emptyColor="gray.200"
+				color="purple.500"
+				size="xl"
+			/>
+		);
 	}
+
+	const capitalize = (s) => {
+		if (typeof s !== "string") return "";
+		return s.charAt(0).toUpperCase() + s.slice(1);
+	};
+
+	const getGreeting = () => {
+		const hour = new Date().getHours();
+		if (hour < 12) {
+			return "Good morning";
+		} else if (hour < 18) {
+			return "Good afternoon";
+		} else {
+			return "Good evening";
+		}
+	};
 
 	return (
 		<>
 			<section className="heading">
-				<h1>Welcome {user && user.name}</h1>
+				<Text
+					bgGradient="linear(to-l, #7928CA, #FF0080)"
+					bgClip="text"
+					fontSize="6xl"
+					fontWeight="extrabold"
+				>
+					{getGreeting()} {user && capitalize(user.name)}
+				</Text>
 				<p>Goals Dashboard</p>
 			</section>
 
-			<GoalForm />
+			<NewGoalModal />
 
 			<section className="content">
 				{goals.length > 0 ? (

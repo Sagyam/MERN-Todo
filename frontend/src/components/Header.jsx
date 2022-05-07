@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 
+import { Button } from "@chakra-ui/react";
+
 function Header() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -23,9 +25,14 @@ function Header() {
 			<ul>
 				{user ? (
 					<li>
-						<button className="btn" onClick={onLogout}>
-							<FaSignOutAlt /> Logout
-						</button>
+						<Button
+							onClick={onLogout}
+							leftIcon={<FaSignOutAlt />}
+							variant="solid"
+							colorScheme="purple"
+						>
+							Logout
+						</Button>
 					</li>
 				) : (
 					<>

@@ -1,7 +1,10 @@
 import { useDispatch } from "react-redux";
 import { updateGoal, deleteGoal } from "../features/goals/goalSlice";
+
 import { FaTrashAlt } from "react-icons/fa";
 import moment from "moment";
+
+import { Checkbox, Button, Heading, Text } from "@chakra-ui/react";
 
 function GoalItem({ goal }) {
 	const dispatch = useDispatch();
@@ -20,23 +23,35 @@ function GoalItem({ goal }) {
 
 	return (
 		<div className={goal.completed ? "goal complete" : "goal"}>
-			<input
-				type="checkbox"
+			<Checkbox
+				size="lg"
+				colorScheme="purple"
+				spacing="1rem"
 				name="complete"
 				id="complete"
-				checked={goal.completed ? "checked" : ""}
+				borderColor="purple.500"
+				isChecked={goal.completed}
 				onChange={handleUpdate}
-			/>
-			<div className="goal-text">
-				<div>{getDate(goal.updatedAt)}</div>
-				<h2>{goal.text}</h2>
-				<button
-					onClick={() => dispatch(deleteGoal(goal._id))}
-					className="close"
-				>
-					<FaTrashAlt />
-				</button>
-			</div>
+			></Checkbox>
+
+			<Text size="md">{goal.startTime}</Text>
+			<Text
+				fontSize="3xl"
+				fontWeight="bold"
+				as={goal.completed ? "del" : ""}
+				color={goal.completed ? "gray.300" : "black"}
+			>
+				{goal.goal}
+			</Text>
+			<Button
+				leftIcon={<FaTrashAlt />}
+				colorScheme="red"
+				variant="solid"
+				onClick={() => dispatch(deleteGoal(goal._id))}
+				width="20%"
+			>
+				Delete
+			</Button>
 		</div>
 	);
 }

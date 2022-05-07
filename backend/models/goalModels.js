@@ -17,15 +17,15 @@ const goalSchema = new mongoose.Schema(
 		},
 		deadline: {
 			type: Date,
-			required: [true, "A goal must have a deadline"],
+			required: false,
 		},
 		startTime: {
 			type: String,
-			required: [true, "A goal must have a start time"],
+			required: false,
 		},
 		endTime: {
 			type: String,
-			required: [true, "A goal must have an end time"],
+			required: false,
 		},
 	},
 	{

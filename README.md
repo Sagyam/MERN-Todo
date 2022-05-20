@@ -4,44 +4,6 @@
 
 This is a simple MERN app that allows users to create goals and track their progress.
 
-## Features
-
-- Authentication
-
-  - Register Routes
-  - Login Routes
-  - Logout Routes
-  - User Profile Routes
-  - User Profile Edit Routes
-  - User Profile Delete Route
-
-- Goal creation
-
-  - Goal creation routes
-  - Goal creation form
-  - Goal creation validation
-  - Goal creation post route
-  - Goal creation delete route
-  - Goal creation update route
-
-- Goal tracking
-
-  - Goal tracking routes
-  - Goal tracking form
-  - Goal tracking validation
-  - Goal tracking post route
-  - Goal tracking delete route
-  - Goal tracking update route
-
-- Goal progress
-
-  - Goal routes
-  - Goal form
-  - Goal validation
-  - Goal post route
-  - Goal delete route
-  - Goal update route
-
 ## Usage
 
 First add your _MONGO_URI_ in `.env` file
@@ -67,6 +29,69 @@ npm install
 npm run bed
 npm run fed
 ```
+
+## API Specifications
+
+### Goals
+
+**Goals Routes**
+
+- `GET /api/goals`
+- `POST /api/goals`
+- `GET /api/goals/:id`
+- `PUT /api/goals/:id`
+- `DELETE /api/goals/:id`
+
+  **Goal Progress**
+
+- `GET /api/goals/:id/progress`
+- `POST /api/goals/:id/progress`
+- `PUT /api/goals/:id/progress/:progressId`
+- `DELETE /api/goals/:id/progress/:progressId`
+
+  **Goal Progress Comments**
+
+- `GET /api/goals/:id/progress/:progressId/comments`
+- `POST /api/goals/:id/progress/:progressId/comments`
+- `PUT /api/goals/:id/progress/:progressId/comments/:commentId`
+- `DELETE /api/goals/:id/progress/:progressId/comments/:commentId`
+
+### Users & Authentication
+
+- Authentication will be ton using JWT/cookies
+  - JWT and cookie should expire in 30 days
+- User registration
+  - Once registered, a token will be sent along with a cookie (token = xxx)
+  - Passwords must be hashed
+- User login
+  - User can login with email and password
+  - Plain text password will compare with stored hashed password
+  - Once logged in, a token will be sent along with a cookie (token = xxx)
+- User logout
+  - Cookie will be sent to set token = none
+- Get user
+  - Route to get the currently logged in user (via token)
+- Password reset (lost password)
+  - User can request to reset password
+  - A hashed token will be emailed to the users registered email address
+  - A put request can be made to the generated url to reset password
+  - The token will expire after 10 minutes
+- Update user info
+  - Authenticated user only
+  - Separate route to update password
+- User CRUD
+  - Admin only
+- Users can only be made admin by updating the database field manually
+
+### Security
+
+- Encrypt passwords and reset tokens
+- Prevent NoSQL injections
+- Add headers for security (helmet)
+- Prevent cross site scripting - XSS
+- Add a rate limit for requests of 100 requests per 10 minutes
+- Protect against http param polution
+- Use cors to make API public (for now)
 
 ## Tech Stack
 

@@ -4,6 +4,17 @@
 
 This is a simple MERN app that allows users to create goals and track their progress.
 
+## Tech Stack
+
+- [MongoDB](https://www.mongodb.com/)
+- [Express](https://expressjs.com/)
+- [React](https://reactjs.org/)
+- [Node.js](https://nodejs.org/)
+- [JWT](https://jwt.io/)
+- [BCrypt](https://www.npmjs.com/package/bcrypt)
+- [Webpack](https://webpack.js.org/)
+- [Babel](https://babeljs.io/)
+
 ## Usage
 
 First add your _MONGO_URI_ in `.env` file
@@ -92,14 +103,3 @@ npm run fed
 - Add a rate limit for requests of 100 requests per 10 minutes
 - Protect against http param polution
 - Use cors to make API public (for now)
-
-## Tech Stack
-
-- [MongoDB](https://www.mongodb.com/)
-- [Express](https://expressjs.com/)
-- [React](https://reactjs.org/)
-- [Node.js](https://nodejs.org/)
-- [JWT](https://jwt.io/)
-- [BCrypt](https://www.npmjs.com/package/bcrypt)
-- [Webpack](https://webpack.js.org/)
-- [Babel](https://babeljs.io/)

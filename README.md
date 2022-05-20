@@ -3,6 +3,7 @@
 [![wakatime](https://wakatime.com/badge/user/4ce09006-1b8c-491f-ace1-a70b32d5fc1c/project/bb2a11ed-9637-4b60-8185-b7d35ccad382.svg?style=for-the-badge)](https://wakatime.com/badge/user/4ce09006-1b8c-491f-ace1-a70b32d5fc1c/project/bb2a11ed-9637-4b60-8185-b7d35ccad382)
 
 This is a simple MERN app that allows users to create goals and track their progress.
+[Live Demo](https://mern-todo-sagyam.herokuapp.com/)
 
 ## Tech Stack
 
